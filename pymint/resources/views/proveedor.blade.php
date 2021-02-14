@@ -45,14 +45,24 @@
                 <thead>
                     <tr>
                         <th>Nombre</th>
-                        <th>Apellido</th>
+                        <th>RFC</th>
+                        <th>Dirección</th>
+                        <th>Telefono</th>
+                        <th>Cuenta Bancaria</th>
                     </tr>
                 </thead>
                 <tbody>
+                    @if(!empty($proveedores))
+                    @foreach($proveedores as $id =>$proveedor)
                     <tr>
-                        <td>Víctor</td>
-                        <td>Ávila</td>
+                        <td>{{$proveedor['nombre']}}</td>
+                        <td>{{$proveedor['rfc']}}</td>
+                        <td>{{$proveedor['direccion']}}</td>
+                        <td>{{$proveedor['telefono']}}</td>
+                        <td>{{$proveedor['cuenta_bancaria']}}</td>
                     </tr>
+                    @endforeach
+                    @endif
                 </tbody>
             </table>
         </div>

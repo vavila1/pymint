@@ -3,10 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Cuenta;
-use App\Models\Proveedores;
 
-class RegistrarCuentaController extends Controller
+class ProveedoresController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +14,6 @@ class RegistrarCuentaController extends Controller
     public function index()
     {
         //
-     
     }
 
     /**
@@ -28,12 +25,6 @@ class RegistrarCuentaController extends Controller
     public function store(Request $request)
     {
         //
-        $response = Cuenta::registrarCuenta($request);
-        if($response == 'true'){
-            return 'true';
-        }else{
-            return 'false';
-        }
     }
 
     /**
@@ -42,12 +33,9 @@ class RegistrarCuentaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($correo)
+    public function show($id)
     {
         //
-        $usuario = Cuenta::buscarCorreo($correo);
-        return $usuario;
-
     }
 
     /**
@@ -71,9 +59,5 @@ class RegistrarCuentaController extends Controller
     public function destroy($id)
     {
         //
-    }
-    public function proveedores($id_usuario){
-        $proveedores = Proveedores::proveedoresUsuario($id_usuario);
-        return $proveedores;
     }
 }

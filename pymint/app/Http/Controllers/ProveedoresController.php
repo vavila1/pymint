@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Usuario;
 
 class ProveedoresController extends Controller
 {
@@ -14,7 +15,9 @@ class ProveedoresController extends Controller
     public function index()
     {
         //
-        return view('proveedor');
+        $data = Usuario::proveedoresUsuario();
+
+        return view('proveedor',['proveedores'=>$data]);
     }
 
     /**

@@ -23,3 +23,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::apiResource('cuentas',RegistrarCuentaController::class);
 
 Route::post('/login',[LoginController::class,'login']);
+Route::get('/cuentas/proveedores/{id}',[RegistrarCuentaController::class,'proveedores']);
