@@ -72,8 +72,5 @@ class RegistrarCuentaController extends Controller
     {
         //
     }
-    public function proveedores($id_usuario){
-        $proveedores = Proveedores::proveedoresUsuario($id_usuario);
-        return $proveedores;
-    }
+    
 }

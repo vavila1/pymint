@@ -29,9 +29,17 @@
 @section("main_content")
 
 @if(session('id'))
+@if(session('mensaje'))
+        <div class="alert alert-info alert-dismissible fade show" role="alert">
+      {{session('mensaje')}}
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    @endif
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
 <h1 class="h3 mb-2 text-gray-800">Proveedores</h1>
-<a href="#" class="d-none d-sm-inline-block btn btn-sm btn-info shadow-sm"><i class="fas fa-plus"></i> Registrar Proveedor</a>
+<a href="{{route('proveedores.create')}}" class="d-sm-inline-block btn btn-sm btn-info shadow-sm"><i class="fas fa-plus"></i> Registrar Proveedor</a>
 </div>
 <div class="card shadow mb-4">
     <div class="card-header py-3">
@@ -49,6 +57,7 @@
                         <th>Dirección</th>
                         <th>Telefono</th>
                         <th>Cuenta Bancaria</th>
+                        <th>Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -60,6 +69,7 @@
                         <td>{{$proveedor['direccion']}}</td>
                         <td>{{$proveedor['telefono']}}</td>
                         <td>{{$proveedor['cuenta_bancaria']}}</td>
+                        <td>Acciones</td>
                     </tr>
                     @endforeach
                     @endif

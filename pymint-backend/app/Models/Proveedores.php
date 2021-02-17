@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Http\Request;
 
 class Proveedores extends Model
 {
@@ -19,6 +20,7 @@ class Proveedores extends Model
     	foreach ($proveedores as $item) {
     		$id = $item->id;
     		$response[$id] = [
+                'id'=>$item->id,
     			'nombre' => $item->nombre,
     			'rfc' =>$item->rfc,
     			'direccion'=>$item->direccion,
@@ -28,6 +30,22 @@ class Proveedores extends Model
     	}
     	return $response;
 
+
+    }
+    public static function registrarProveedor(Request $request){
+        $proveedor = new Proveedores;
+        $proveedor->id_usuario = $request->input('id_usuario');
+        $proveedor->nombre = $request->input('nombre');
+        $proveedor->rfc = $request->input('rfc');
+        $proveedor->direccion = $request->input('direccion');
+        $proveedor->telefono = $request->input('telefono');
+        $proveedor->cuenta_bancaria = $request->input('cuenta_bancaria');
+        $proveedor->save();
+        if($proveedor->save()){
+            return 'true';
+        }else{
+            return 'false';
+        }
 
     }
 }

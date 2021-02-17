@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Proveedores;
 
 class ProveedoresController extends Controller
 {
@@ -25,6 +26,8 @@ class ProveedoresController extends Controller
     public function store(Request $request)
     {
         //
+        $response = Proveedores::registrarProveedor($request);
+        return $response;
     }
 
     /**
@@ -59,5 +62,10 @@ class ProveedoresController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function proveedores($id_usuario){
+        $proveedores = Proveedores::proveedoresUsuario($id_usuario);
+        return $proveedores;
     }
 }

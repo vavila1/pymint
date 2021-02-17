@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RegistrarCuentaController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\ProveedoresController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,4 +24,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::apiResource('cuentas',RegistrarCuentaController::class);
 
 Route::post('/login',[LoginController::class,'login']);
-Route::get('/cuentas/proveedores/{id}',[RegistrarCuentaController::class,'proveedores']);
+Route::apiResource('proveedores',ProveedoresController::class);
+Route::get('/usuario/proveedores/{id}',[ProveedoresController::class,'proveedores']);

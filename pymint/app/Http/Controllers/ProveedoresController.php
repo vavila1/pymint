@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Usuario;
+use App\Models\Proveedores;
 
 class ProveedoresController extends Controller
 {
@@ -28,6 +29,7 @@ class ProveedoresController extends Controller
     public function create()
     {
         //
+        return view('form_proveedor');
     }
 
     /**
@@ -39,6 +41,10 @@ class ProveedoresController extends Controller
     public function store(Request $request)
     {
         //
+       $response = Proveedores::registrarProveedor($request);
+       if($response=='true'){
+        return redirect('proveedores')->with('mensaje','¡El proveedor ha sido registrado con éxito!');
+       }
     }
 
     /**

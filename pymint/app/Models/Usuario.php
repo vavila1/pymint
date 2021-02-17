@@ -14,10 +14,10 @@ class Usuario extends Model
     	$data = $request->all();
     	unset($data['_token']);
 
-    	$response = Http::post('http://127.0.0.1:8001/api/cuentas',$data);
+    	$response = Http::post(env('APPI2').'cuentas',$data);
  
     	if($response == 'true'){
-    		$response2 = Http::get('http://127.0.0.1:8001/api/cuentas/'.$request->input('correo'));
+    		$response2 = Http::get(env('APPI2').'cuentas/'.$request->input('correo'));
     		$request->session()->put('id',$response2['id']);
     		$request->session()->put('nombre',$response2['nombre']);
     		$request->session()->put('apellido',$response2['apellido']);
@@ -31,9 +31,9 @@ class Usuario extends Model
         $data = $request->all();
         unset($data['_token']);
         
-        $response = Http::post('http://127.0.0.1:8001/api/login',$data);
+        $response = Http::post(env('APPI2').'login',$data);
         if($response == 'true'){
-            $response2 = Http::get('http://127.0.0.1:8001/api/cuentas/'.$request->input('correo'));
+            $response2 = Http::get(env('APPI2').'cuentas/'.$request->input('correo'));
             $request->session()->put('id',$response2['id']);
             $request->session()->put('nombre',$response2['nombre']);
             $request->session()->put('apellido',$response2['apellido']);
@@ -45,7 +45,7 @@ class Usuario extends Model
     }
     public static function proveedoresUsuario(){
         $id = session('id');
-        $data = Http::get('http://127.0.0.1:8001/api/cuentas/proveedores/'.$id);
+        $data = Http::get(env('APPI2').'usuario/proveedores/'.$id);
         return $data->json();
     }
 }
