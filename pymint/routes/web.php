@@ -31,5 +31,7 @@ Route::resource('/login',LoginControlller::class)->except([
 	'index'
 ]);
 
-Route::resource('/proveedores',ProveedoresController::class);
-
+Route::resource('/proveedores',ProveedoresController::class)->except([
+	'destroy'
+]);
+Route::get('/proveedores/destroy/{id}',[ProveedoresController::class,'destroy'])->name('eliminar_proveedor');

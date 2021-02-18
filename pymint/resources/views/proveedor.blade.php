@@ -69,7 +69,7 @@
                         <td>{{$proveedor['direccion']}}</td>
                         <td>{{$proveedor['telefono']}}</td>
                         <td>{{$proveedor['cuenta_bancaria']}}</td>
-                        <td>Acciones</td>
+                        <td><a class="btn btn-danger btn-circle btn-sm" href="{{route('eliminar_proveedor',$proveedor['id'])}}" onclick="return confirm('<?php echo "¿Deseas borrar a ".$proveedor['nombre']?>')"><i class="fas fa-trash"></i></a></td>
                     </tr>
                     @endforeach
                     @endif

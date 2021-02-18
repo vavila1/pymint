@@ -48,4 +48,17 @@ class Proveedores extends Model
         }
 
     }
+    public static function borrarProveedor($id_proveedor){
+        $proveedor = Proveedores::find($id_proveedor);
+        if($proveedor!=null){
+            $val = $proveedor->delete();
+            if($val==1){
+                return 'true';
+            }else{
+                return 'false';
+            }
+        }else{
+            return 'false';
+        }
+    }
 }

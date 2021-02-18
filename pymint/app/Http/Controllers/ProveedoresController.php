@@ -90,5 +90,9 @@ class ProveedoresController extends Controller
     public function destroy($id)
     {
         //
+        $response = Proveedores::borrarProveedor($id);
+        if($response=='true'){
+            return redirect('proveedores')->with('mensaje','¡El registro ha sido eliminado correctamente!');
+        }
     }
 }

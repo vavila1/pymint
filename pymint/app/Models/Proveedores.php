@@ -22,4 +22,13 @@ class Proveedores extends Model
     		return 'false';
     	}
     }
+
+    public static function borrarProveedor($id_proveedor){
+        $response = Http::delete(env('APPI2').'proveedores/'.$id_proveedor);
+        if($response=='true'){
+            return 'true';
+        }else{
+            return 'false';
+        }
+    }
 }

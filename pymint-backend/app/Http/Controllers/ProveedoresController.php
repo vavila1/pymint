@@ -62,6 +62,8 @@ class ProveedoresController extends Controller
     public function destroy($id)
     {
         //
+        $response = Proveedores::borrarProveedor($id);
+        return $response;
     }
 
     public function proveedores($id_usuario){
