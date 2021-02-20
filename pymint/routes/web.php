@@ -5,6 +5,7 @@ use App\Http\Controllers\RegsitrarseController;
 use App\Http\Controllers\SessionController;
 use App\Http\Controllers\LoginControlller;
 use App\Http\Controllers\ProveedoresController;
+use App\Http\Controllers\ClientesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,3 +36,5 @@ Route::resource('/proveedores',ProveedoresController::class)->except([
 	'destroy'
 ]);
 Route::get('/proveedores/destroy/{id}',[ProveedoresController::class,'destroy'])->name('eliminar_proveedor');
+
+Route::resource('/clientes',ClientesController::class);

@@ -18,7 +18,7 @@
             </li>
             <hr class="sidebar-divider my-0">
             <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="{{route('clientes.index')}}">
                     <i class="fas fa-briefcase"></i>
                     <span>Clientes</span></a>
             </li>

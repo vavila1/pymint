@@ -30,13 +30,13 @@
 
 @if(session('id'))
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-<h1 class="h3 mb-2 text-gray-800">Proveedores</h1>
-<a href="#" class="d-none d-sm-inline-block btn btn-sm btn-info shadow-sm"><i class="fas fa-plus"></i> Registrar Proveedor</a>
+<h1 class="h3 mb-2 text-gray-800">Clientes</h1>
+<a href="#" class="d-none d-sm-inline-block btn btn-sm btn-info shadow-sm"><i class="fas fa-plus"></i> Registrar Cliente</a>
 </div>
 <div class="card shadow mb-4">
     <div class="card-header py-3">
         <h6 class="m-0 font-weight-bold text-info">
-            Tabla de Proveedores
+            Tabla de Clientes
         </h6>
     </div>
     <div class="card-body">
@@ -45,14 +45,24 @@
                 <thead>
                     <tr>
                         <th>Nombre</th>
-                        <th>Apellido</th>
+                        <th>RFC</th>
+                        <th>Dirección</th>
+                        <th>Telefono</th>
+                        <th>Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
+                    @if(!empty($clientes))
+                    @foreach($clientes as $id =>$cliente)
                     <tr>
-                        <td>Víctor</td>
-                        <td>Ávila</td>
+                        <td>{{$cliente['nombre']}}</td>
+                        <td>{{$cliente['rfc']}}</td>
+                        <td>{{$cliente['direccion']}}</td>
+                        <td>{{$cliente['telefono']}}</td>
+                        <td><a class="btn btn-danger btn-circle btn-sm" href="#" onclick="return confirm('<?php echo "¿Deseas borrar a ".$cliente['nombre']?>')"><i class="fas fa-trash"></i></a></td>
                     </tr>
+                    @endforeach
+                    @endif
                 </tbody>
             </table>
         </div>

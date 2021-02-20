@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RegistrarCuentaController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProveedoresController;
+use App\Http\Controllers\ClientesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,3 +27,5 @@ Route::apiResource('cuentas',RegistrarCuentaController::class);
 Route::post('/login',[LoginController::class,'login']);
 Route::apiResource('proveedores',ProveedoresController::class);
 Route::get('/usuario/proveedores/{id}',[ProveedoresController::class,'proveedores']);
+Route::apiResource('clientes',ClientesController::class);
+Route::get('/usuario/clientes/{id}',[ClientesController::class,'clientes']);

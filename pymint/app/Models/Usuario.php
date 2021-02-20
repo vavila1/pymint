@@ -48,4 +48,9 @@ class Usuario extends Model
         $data = Http::get(env('APPI2').'usuario/proveedores/'.$id);
         return $data->json();
     }
+    public static function clientesUsuario(){
+        $id = session('id');
+        $data = Http::get(env('APPI2').'usuario/clientes/'.$id);
+        return $data->json();
+    }
 }
