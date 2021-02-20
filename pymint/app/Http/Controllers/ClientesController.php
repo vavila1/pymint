@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Usuario;
+use App\Models\Clientes;
 
 class ClientesController extends Controller
 {
@@ -80,8 +81,12 @@ class ClientesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($id_cliente)
     {
         //
+        $response = Clientes::borrarCliente($id_cliente);
+        if($response=='true'){
+            return redirect('clientes')->with('mensaje','¡El registro ha sido eliminado correctamente!');
+        }
     }
 }

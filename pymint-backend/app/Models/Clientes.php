@@ -29,4 +29,18 @@ class Clientes extends Model
     	}
     	return $response;
     }
+
+    public static function borrarCliente($id_cliente){
+        $cliente = Clientes::find($id_cliente);
+        if($cliente!=null){
+            $val = $cliente->delete();
+            if($val==1){
+                return 'true';
+            }else{
+                return 'false';
+            }
+        }else{
+            return 'false';
+        }
+    }
 }

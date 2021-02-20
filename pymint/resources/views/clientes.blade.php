@@ -29,6 +29,14 @@
 @section("main_content")
 
 @if(session('id'))
+@if(session('mensaje'))
+        <div class="alert alert-info alert-dismissible fade show" role="alert">
+      {{session('mensaje')}}
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    @endif
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
 <h1 class="h3 mb-2 text-gray-800">Clientes</h1>
 <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-info shadow-sm"><i class="fas fa-plus"></i> Registrar Cliente</a>
@@ -59,7 +67,7 @@
                         <td>{{$cliente['rfc']}}</td>
                         <td>{{$cliente['direccion']}}</td>
                         <td>{{$cliente['telefono']}}</td>
-                        <td><a class="btn btn-danger btn-circle btn-sm" href="#" onclick="return confirm('<?php echo "¿Deseas borrar a ".$cliente['nombre']?>')"><i class="fas fa-trash"></i></a></td>
+                        <td><a class="btn btn-danger btn-circle btn-sm" href="{{route('eliminar_cliente',$cliente['id'])}}" onclick="return confirm('<?php echo "¿Deseas borrar a ".$cliente['nombre']?>')"><i class="fas fa-trash"></i></a></td>
                     </tr>
                     @endforeach
                     @endif

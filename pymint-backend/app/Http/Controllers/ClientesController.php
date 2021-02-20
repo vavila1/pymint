@@ -81,6 +81,8 @@ class ClientesController extends Controller
     public function destroy($id)
     {
         //
+        $response = Clientes::borrarCliente($id);
+        return $response;
     }
     public function clientes($id_usuario)
     {
