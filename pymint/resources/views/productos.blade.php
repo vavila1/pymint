@@ -38,7 +38,7 @@
     @endif
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
 <h1 class="h3 mb-2 text-gray-800">Productos del proveedor {{$productos[1]['nombre_proveedor']}}</h1>
-<a href="#" class="d-sm-inline-block btn btn-sm btn-info shadow-sm"><i class="fas fa-plus"></i> Registrar Producto</a>
+<a href="{{route('proveedores.productos.create',$productos[1]['id_proveedor'])}}" class="d-sm-inline-block btn btn-sm btn-info shadow-sm"><i class="fas fa-plus"></i> Registrar Producto</a>
 </div>
 <div class="card shadow mb-4">
     <div class="card-header py-3">

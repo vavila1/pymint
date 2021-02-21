@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Proveedores;
+use App\Models\Productos;
 
 class ProductosController extends Controller
 {
@@ -24,9 +25,10 @@ class ProductosController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id_proveedor)
     {
         //
+        return view('form_producto',['id_proveedor'=>$id_proveedor]);
     }
 
     /**
@@ -35,9 +37,13 @@ class ProductosController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store($id_proveedor,Request $request)
     {
         //
+        $response = Productos::registrarProductos($id_proveedor,$request);
+       if($response=='true'){
+        return redirect()->route('proveedores.productos.index',$id_proveedor)->with('mensaje','¡El producto ha sido registrado con éxito!');
+       }
     }
 
     /**

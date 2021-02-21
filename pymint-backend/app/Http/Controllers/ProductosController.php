@@ -25,9 +25,11 @@ class ProductosController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store($id_proveedor,Request $request)
     {
         //
+        $response = Productos::registrarProducto($id_proveedor,$request);
+        return $response;
     }
 
     /**
