@@ -19,6 +19,7 @@ class Productos extends Migration
             $table->unsignedBigInteger('id_proveedor');
             $table->foreign('id_proveedor')->references('id')->on('proveedores');
             $table->string('nombre');
+            $table->integer('estatus');
             $table->timestamps();
         });
     }

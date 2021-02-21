@@ -48,6 +48,20 @@ class Proveedores extends Model
         }
 
     }
+
+    public static function datosProveedor($id_proveedor){
+        $proveedores = self::select('proveedores.id as id','proveedores.nombre as nombre')
+                ->where('proveedores.id','=',$id_proveedor)
+                ->get();
+
+        $response = [];
+        foreach ($proveedores as $item) {
+            $response = [
+                'id'=>$item->id,
+                'nombre' => $item->nombre
+            ];
+        } return $response;
+    }
     public static function borrarProveedor($id_proveedor){
         $proveedor = Proveedores::find($id_proveedor);
         if($proveedor!=null){

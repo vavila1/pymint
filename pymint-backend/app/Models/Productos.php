@@ -13,7 +13,10 @@ class Productos extends Model
 
     public static function productosProveedor($id_proveedor){
     	$proveedores = self::select('proveedores.nombre as nombre_proveedor','productos.id as id','productos.nombre as nombre')
-    			->where('productos.id_proveedor','=',$id_proveedor)
+    			->where([
+                    ['productos.id_proveedor','=',$id_proveedor],
+                    ['productos.estatus','=',1],
+                ])
     			->join('proveedores','productos.id_proveedor','proveedores.id')
     			->get();
 
@@ -34,9 +37,25 @@ class Productos extends Model
         $producto = new Productos;
         $producto->id_proveedor = $id_proveedor;
         $producto->nombre = $request->input('nombre');
+        $producto->estatus = 1;
         $producto->save();
         if($producto->save()){
             return 'true';
+        }else{
+            return 'false';
+        }
+    }
+
+    public static function borrarProducto($id_proveedor,$id_producto){
+        $producto = Productos::find($id_producto);
+        if($producto!=null){
+            $producto->estatus = 2;
+            $producto->save();
+            if($producto->save()){
+                return 'true';
+            }else{
+                return 'false';
+            }
         }else{
             return 'false';
         }

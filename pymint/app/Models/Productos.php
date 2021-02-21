@@ -21,4 +21,13 @@ class Productos extends Model
     		return 'false';
     	}
     }
+
+    public static function borrarProducto($id_proveedor,$id_producto){
+        $response = Http::delete(env('APPI2').'proveedores/'.$id_proveedor.'/productos/'.$id_producto);
+        if($response=='true'){
+            return 'true';
+        }else{
+            return 'false';
+        }
+    }
 }

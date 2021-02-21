@@ -39,6 +39,8 @@ class ProveedoresController extends Controller
     public function show($id)
     {
         //
+        $proveedor = Proveedores::datosProveedor($id);
+        return $proveedor;
     }
 
     /**

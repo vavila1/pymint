@@ -43,4 +43,7 @@ Route::resource('/clientes',ClientesController::class)->except([
 ]);
 Route::get('/clientes/destroy/{id}',[ClientesController::class,'destroy'])->name('eliminar_cliente');
 
-Route::resource('proveedores.productos', ProductosController::class);
+Route::resource('proveedores.productos', ProductosController::class)->except([
+	'destroy'
+]);
+Route::get('/productos/destroy/{id_producto}/{id_proveedor}',[ProductosController::class,'destroy'])->name('eliminar_producto');

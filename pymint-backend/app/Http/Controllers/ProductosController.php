@@ -61,8 +61,10 @@ class ProductosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($id_proveedor,$id_producto)
     {
         //
+        $response = Productos::borrarProducto($id_proveedor,$id_producto);
+        return $response;
     }
 }

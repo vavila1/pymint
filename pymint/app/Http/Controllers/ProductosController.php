@@ -16,8 +16,12 @@ class ProductosController extends Controller
     public function index($id_proveedor)
     {
         //
+        $proveedor = Proveedores::datosProveedor($id_proveedor);
         $productos = Proveedores::productosProveedor($id_proveedor);
-        return view('productos',['productos'=>$productos]);
+        return view('productos',[
+            'productos'=>$productos,
+            'proveedor'=>$proveedor
+        ]);
     }
 
     /**
@@ -43,6 +47,8 @@ class ProductosController extends Controller
         $response = Productos::registrarProductos($id_proveedor,$request);
        if($response=='true'){
         return redirect()->route('proveedores.productos.index',$id_proveedor)->with('mensaje','¡El producto ha sido registrado con éxito!');
+       }else{
+        dd("hay pedos");die();
        }
     }
 
@@ -86,8 +92,11 @@ class ProductosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($id_producto,$id_proveedor)
     {
-        //
+        $response = Productos::borrarProducto($id_proveedor,$id_producto);
+        if($response=='true'){
+            return redirect()->route('proveedores.productos.index',$id_proveedor)->with('mensaje','¡El registro ha sido eliminado correctamente!');
+        }
     }
 }

@@ -36,4 +36,9 @@ class Proveedores extends Model
         $response = Http::get(env('APPI2').'proveedores/'.$id_proveedor.'/productos');
         return $response->json();
     }
+
+    public static function datosProveedor($id_proveedor){
+        $response = Http::get(env('APPI2').'proveedores/'.$id_proveedor);
+        return $response->json();
+    }
 }
