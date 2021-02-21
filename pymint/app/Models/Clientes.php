@@ -19,4 +19,16 @@ class Clientes extends Model
         }
 
     }
+
+    public static function registrarCliente(Request $request){
+    	$data = $request->all();
+    	unset($data['_token']);
+    	$data['id_usuario'] = session('id');
+    	$response = Http::post(env('APPI2').'clientes',$data);
+    	if($response=='true'){
+    		return 'true';
+    	}else{
+    		return 'false';
+    	}
+    }
 }

@@ -31,4 +31,9 @@ class Proveedores extends Model
             return 'false';
         }
     }
+
+    public static function productosProveedor($id_proveedor){
+        $response = Http::get(env('APPI2').'proveedores/'.$id_proveedor.'/productos');
+        return $response->json();
+    }
 }

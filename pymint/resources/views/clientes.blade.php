@@ -39,7 +39,7 @@
     @endif
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
 <h1 class="h3 mb-2 text-gray-800">Clientes</h1>
-<a href="#" class="d-none d-sm-inline-block btn btn-sm btn-info shadow-sm"><i class="fas fa-plus"></i> Registrar Cliente</a>
+<a href="{{route('clientes.create')}}" class="d-none d-sm-inline-block btn btn-sm btn-info shadow-sm"><i class="fas fa-plus"></i> Registrar Cliente</a>
 </div>
 <div class="card shadow mb-4">
     <div class="card-header py-3">

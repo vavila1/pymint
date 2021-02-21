@@ -26,8 +26,7 @@
             <hr class="sidebar-divider d-none d-md-block">
 
 @endsection
-@section("main_content")
-
+@section('main_content')
 @if(session('id'))
 @if(session('mensaje'))
         <div class="alert alert-info alert-dismissible fade show" role="alert">
@@ -38,13 +37,13 @@
     </div>
     @endif
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-<h1 class="h3 mb-2 text-gray-800">Proveedores</h1>
-<a href="{{route('proveedores.create')}}" class="d-sm-inline-block btn btn-sm btn-info shadow-sm"><i class="fas fa-plus"></i> Registrar Proveedor</a>
+<h1 class="h3 mb-2 text-gray-800">Productos del proveedor {{$productos[1]['nombre_proveedor']}}</h1>
+<a href="#" class="d-sm-inline-block btn btn-sm btn-info shadow-sm"><i class="fas fa-plus"></i> Registrar Producto</a>
 </div>
 <div class="card shadow mb-4">
     <div class="card-header py-3">
         <h6 class="m-0 font-weight-bold text-info">
-            Tabla de Proveedores
+            Tabla de Productos
         </h6>
     </div>
     <div class="card-body">
@@ -53,23 +52,15 @@
                 <thead>
                     <tr>
                         <th>Nombre</th>
-                        <th>RFC</th>
-                        <th>Dirección</th>
-                        <th>Telefono</th>
-                        <th>Cuenta Bancaria</th>
                         <th>Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @if(!empty($proveedores))
-                    @foreach($proveedores as $id =>$proveedor)
+                    @if(!empty($productos))
+                    @foreach($productos as $id =>$producto)
                     <tr>
-                        <td>{{$proveedor['nombre']}}</td>
-                        <td>{{$proveedor['rfc']}}</td>
-                        <td>{{$proveedor['direccion']}}</td>
-                        <td>{{$proveedor['telefono']}}</td>
-                        <td>{{$proveedor['cuenta_bancaria']}}</td>
-                        <td><a class="btn btn-info btn-circle btn-sm" href="{{route('proveedores.productos.index',$proveedor['id'])}}"><i class="fas fa-dolly"></i></a> <a class="btn btn-danger btn-circle btn-sm" href="{{route('eliminar_proveedor',$proveedor['id'])}}" onclick="return confirm('<?php echo "¿Deseas borrar a ".$proveedor['nombre']?>')"><i class="fas fa-trash"></i></a></td>
+                        <td>{{$producto['nombre']}}</td>
+                        <td><a class="btn btn-danger btn-circle btn-sm" href="" onclick="return confirm('<?php echo "¿Deseas borrar a ".$producto['nombre']?>')"><i class="fas fa-trash"></i></a></td>
                     </tr>
                     @endforeach
                     @endif

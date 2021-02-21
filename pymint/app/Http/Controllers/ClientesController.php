@@ -16,6 +16,9 @@ class ClientesController extends Controller
     public function index()
     {
         //
+        if(!session('id')){
+            return redirect('/');
+        }
         $clientes = Usuario::clientesUsuario();
         return view('clientes',['clientes'=>$clientes]);
     }
@@ -28,6 +31,7 @@ class ClientesController extends Controller
     public function create()
     {
         //
+        return view('form_cliente');
     }
 
     /**
@@ -39,6 +43,10 @@ class ClientesController extends Controller
     public function store(Request $request)
     {
         //
+        $response = Clientes::registrarCliente($request);
+        if($response=='true'){
+        return redirect('clientes')->with('mensaje','¡El cliente ha sido registrado con éxito!');
+       }
     }
 
     /**

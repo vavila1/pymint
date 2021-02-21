@@ -16,6 +16,9 @@ class ProveedoresController extends Controller
     public function index()
     {
         //
+        if(!session('id')){
+            return redirect('/');
+        }
         $data = Usuario::proveedoresUsuario();
 
         return view('proveedor',['proveedores'=>$data]);

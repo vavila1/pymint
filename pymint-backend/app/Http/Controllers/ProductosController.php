@@ -3,28 +3,20 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Clientes;
+use App\Models\Productos;
 
-class ClientesController extends Controller
+class ProductosController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($id_proveedor)
     {
         //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        $productos = Productos::productosProveedor($id_proveedor);
+        return $productos;
     }
 
     /**
@@ -36,8 +28,6 @@ class ClientesController extends Controller
     public function store(Request $request)
     {
         //
-        $response = Clientes::registrarCliente($request);
-        return $response;
     }
 
     /**
@@ -47,17 +37,6 @@ class ClientesController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
     {
         //
     }
@@ -83,12 +62,5 @@ class ClientesController extends Controller
     public function destroy($id)
     {
         //
-        $response = Clientes::borrarCliente($id);
-        return $response;
-    }
-    public function clientes($id_usuario)
-    {
-        $clientes = Clientes::clientesUsuario($id_usuario);
-        return $clientes;
     }
 }

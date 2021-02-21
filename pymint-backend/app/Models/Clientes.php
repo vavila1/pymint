@@ -43,4 +43,20 @@ class Clientes extends Model
             return 'false';
         }
     }
+
+    public static function registrarCliente(Request $request){
+        $cliente = new Clientes;
+        $cliente->id_usuario = $request->input('id_usuario');
+        $cliente->nombre = $request->input('nombre');
+        $cliente->rfc = $request->input('rfc');
+        $cliente->direccion = $request->input('direccion');
+        $cliente->telefono = $request->input('telefono');
+        $cliente->save();
+        if($cliente->save()){
+            return 'true';
+        }else{
+            return 'false';
+        }
+
+    }
 }

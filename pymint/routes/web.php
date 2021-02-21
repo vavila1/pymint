@@ -6,6 +6,7 @@ use App\Http\Controllers\SessionController;
 use App\Http\Controllers\LoginControlller;
 use App\Http\Controllers\ProveedoresController;
 use App\Http\Controllers\ClientesController;
+use App\Http\Controllers\ProductosController;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,3 +42,5 @@ Route::resource('/clientes',ClientesController::class)->except([
 	'destroy'
 ]);
 Route::get('/clientes/destroy/{id}',[ClientesController::class,'destroy'])->name('eliminar_cliente');
+
+Route::resource('proveedores.productos', ProductosController::class);

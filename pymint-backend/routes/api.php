@@ -6,6 +6,7 @@ use App\Http\Controllers\RegistrarCuentaController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProveedoresController;
 use App\Http\Controllers\ClientesController;
+use App\Http\Controllers\ProductosController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,3 +30,4 @@ Route::apiResource('proveedores',ProveedoresController::class);
 Route::get('/usuario/proveedores/{id}',[ProveedoresController::class,'proveedores']);
 Route::apiResource('clientes',ClientesController::class);
 Route::get('/usuario/clientes/{id}',[ClientesController::class,'clientes']);
+Route::apiResource('/proveedores/{id}/productos',ProductosController::class);
