@@ -7,6 +7,7 @@ use App\Http\Controllers\LoginControlller;
 use App\Http\Controllers\ProveedoresController;
 use App\Http\Controllers\ClientesController;
 use App\Http\Controllers\ProductosController;
+use App\Http\Controllers\MovimientosController;
 
 /*
 |--------------------------------------------------------------------------
@@ -47,3 +48,5 @@ Route::resource('proveedores.productos', ProductosController::class)->except([
 	'destroy'
 ]);
 Route::get('/productos/destroy/{id_producto}/{id_proveedor}',[ProductosController::class,'destroy'])->name('eliminar_producto');
+
+Route::resource('/movimientos',MovimientosController::class);

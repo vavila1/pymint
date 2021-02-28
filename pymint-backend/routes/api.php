@@ -30,4 +30,4 @@ Route::apiResource('proveedores',ProveedoresController::class);
 Route::get('/usuario/proveedores/{id}',[ProveedoresController::class,'proveedores']);
 Route::apiResource('clientes',ClientesController::class);
 Route::get('/usuario/clientes/{id}',[ClientesController::class,'clientes']);
-Route::apiResource('/proveedores/{id}/productos',ProductosController::class);
+Route::apiResource('proveedores.productos',ProductosController::class);

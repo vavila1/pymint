@@ -60,4 +60,13 @@ class Productos extends Model
             return 'false';
         }
     }
+
+    public static function borrarProductos($id_proveedor){
+        $productos = self::where([
+                    ['productos.id_proveedor','=',$id_proveedor],
+                    ['productos.estatus','=',1],
+                ])
+                ->update(['estatus'=>2]);
+        return $productos;
+    }
 }

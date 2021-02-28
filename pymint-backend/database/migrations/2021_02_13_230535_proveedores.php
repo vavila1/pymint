@@ -23,6 +23,7 @@ class Proveedores extends Migration
             $table->text('direccion');
             $table->string('telefono');
             $table->string('cuenta_bancaria');
+            $table->integer('estatus');
             $table->timestamps();
         });
     }

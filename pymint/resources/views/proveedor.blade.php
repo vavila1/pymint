@@ -11,6 +11,13 @@
 
             <!-- Divider despues de tablero -->
             <hr class="sidebar-divider my-0">
+            <li class="nav-item">
+                <a class="nav-link" href="{{route('movimientos.index')}}">
+                    <i class="fas fa-briefcase"></i>
+                    <span>Movimientos</span></a>
+                </a>
+            </li>
+            <hr class="sidebar-divider my-0">
             <li class="nav-item active">
                 <a class="nav-link" href="{{route('proveedores.index')}}">
                     <i class="fas fa-briefcase"></i>

@@ -3,25 +3,18 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Proveedores;
-use App\Models\Productos;
 
-class ProductosController extends Controller
+class MovimientosController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($id_proveedor)
+    public function index()
     {
         //
-        $proveedor = Proveedores::datosProveedor($id_proveedor);
-        $productos = Proveedores::productosProveedor($id_proveedor);
-        return view('productos',[
-            'productos'=>$productos,
-            'proveedor'=>$proveedor
-        ]);
+        return view('movimientos');
     }
 
     /**
@@ -29,10 +22,9 @@ class ProductosController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create($id_proveedor)
+    public function create()
     {
         //
-        return view('form_producto',['id_proveedor'=>$id_proveedor]);
     }
 
     /**
@@ -41,14 +33,9 @@ class ProductosController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store($id_proveedor,Request $request)
+    public function store(Request $request)
     {
         //
-        $response = Productos::registrarProductos($id_proveedor,$request);
-       if($response=='true'){
-        return redirect()->route('proveedores.productos.index',$id_proveedor)->with('mensaje','¡El producto ha sido registrado con éxito!');
-       }else{
-       }
     }
 
     /**
@@ -91,11 +78,8 @@ class ProductosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id_producto,$id_proveedor)
+    public function destroy($id)
     {
-        $response = Productos::borrarProducto($id_proveedor,$id_producto);
-        if($response=='true'){
-            return redirect()->route('proveedores.productos.index',$id_proveedor)->with('mensaje','¡El registro ha sido eliminado correctamente!');
-        }
+        //
     }
 }

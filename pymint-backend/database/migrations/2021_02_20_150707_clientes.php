@@ -22,6 +22,7 @@ class Clientes extends Migration
             $table->string('rfc');
             $table->text('direccion');
             $table->string('telefono');
+            $table->integer('estatus');
             $table->timestamps();
         });
     }

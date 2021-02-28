@@ -12,7 +12,11 @@ class Clientes extends Model
     protected $table = 'clientes';
     public static function clientesUsuario($id_usuario){
     	$proveedores = self::select('clientes.id as id','clientes.nombre as nombre','clientes.rfc as rfc','clientes.direccion as direccion','clientes.telefono as telefono')
-    			->where('clientes.id_usuario','=',$id_usuario)
+    			->where([
+                    ['clientes.id_usuario','=',$id_usuario],
+                    ['clientes.estatus','=',1],
+                ])
+
     			->join('usuario','clientes.id_usuario','usuario.id')
     			->get();
 
@@ -33,8 +37,9 @@ class Clientes extends Model
     public static function borrarCliente($id_cliente){
         $cliente = Clientes::find($id_cliente);
         if($cliente!=null){
-            $val = $cliente->delete();
-            if($val==1){
+            $cliente->estatus = 2;
+            $cliente->save();
+            if($cliente->save()){
                 return 'true';
             }else{
                 return 'false';
@@ -51,6 +56,7 @@ class Clientes extends Model
         $cliente->rfc = $request->input('rfc');
         $cliente->direccion = $request->input('direccion');
         $cliente->telefono = $request->input('telefono');
+        $cliente->estatus = 1;
         $cliente->save();
         if($cliente->save()){
             return 'true';
