@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Movimientos;
 
 class MovimientosController extends Controller
 {
@@ -22,6 +23,24 @@ class MovimientosController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function index_ingresos()
+    {
+        if(!session('id')){
+            return redirect('/');
+        }
+        $ingresos = Movimientos::ingresosUsuario(session('id'));
+        return view('movimientos_ingresos',['ingresos'=>$ingresos]);
+    }
+    public function index_gastos()
+    {
+        if(!session('id')){
+            return redirect('/');
+        }
+        $gastos = Movimientos::gastosUsuario(session('id'));
+        return view('movimientos_gastos',['gastos'=>$gastos]);
+    }
+
+
     public function create()
     {
         //

@@ -49,4 +49,6 @@ Route::resource('proveedores.productos', ProductosController::class)->except([
 ]);
 Route::get('/productos/destroy/{id_producto}/{id_proveedor}',[ProductosController::class,'destroy'])->name('eliminar_producto');
 
-Route::resource('/movimientos',MovimientosController::class);
+Route::get('/movimientos',[MovimientosController::class,'index'])->name('movimientos');
+Route::get('/movimientos/ingresos',[MovimientosController::class,'index_ingresos'])->name('movimientos_ingresos');
+Route::get('/movimientos/gastos',[MovimientosController::class,'index_gastos'])->name('movimientos_gastos');

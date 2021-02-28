@@ -35,39 +35,43 @@
 @endsection
 @section("main_content")
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-<h1 class="h3 mb-2 text-gray-800">Movimientos</h1>
+<h1 class="h3 mb-2 text-gray-800">Ingresos</h1>
 </div>
-<div class="row">
-    <div class="col-sm-6">
-        <div class="card shadow mb-4">
-            <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-info">
-                    Ingresos
-                </h6>
-            </div>
-            <div class="card-body">
-                <div class="text-center">
-                    <a href="{{route('movimientos_ingresos')}}">
-                        <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;height: 100px;"src="/Fotos/ingresos.svg" alt="">
-                    </a>
-                </div>
-            </div>
-        </div>
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-info">
+            Tabla de Ingresos
+        </h6>
     </div>
-    <div class="col-sm-6">
-        <div class="card shadow mb-4">
-            <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-info">
-                    Gastos
-                </h6>
-            </div>
-            <div class="card-body">
-                <div class="text-center">
-                    <a href="{{route('movimientos_gastos')}}">
-                        <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;height: 100px;"src="/Fotos/gastos.svg" alt="">
-                    </a>
-                </div>
-            </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Producto</th>
+                        <th>Cliente</th>
+                        <th>Cantidad</th>
+                        <th>Precio</th>
+                        <th>Descripcion</th>
+                        <th>Fecha</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if(!empty($ingresos))
+                    @foreach($ingresos as $id =>$ingreso)
+                    <tr>
+                        <td>{{$ingreso['nombre_producto']}}</td>
+                        <td>{{$ingreso['nombre_cliente']}}</td>
+                        <td>{{$ingreso['cantidad']}}</td>
+                        <td>{{$ingreso['precio']}}</td>
+                        <td>{{$ingreso['descripcion']}}</td>
+                        <td>{{$ingreso['fecha']}}</td>
+                        <td> No hay</td>
+                    @endforeach
+                    @endif
+                </tbody>
+            </table>
         </div>
     </div>
 </div>

@@ -7,6 +7,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProveedoresController;
 use App\Http\Controllers\ClientesController;
 use App\Http\Controllers\ProductosController;
+use App\Http\Controllers\MovimientosController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,3 +32,5 @@ Route::get('/usuario/proveedores/{id}',[ProveedoresController::class,'proveedore
 Route::apiResource('clientes',ClientesController::class);
 Route::get('/usuario/clientes/{id}',[ClientesController::class,'clientes']);
 Route::apiResource('proveedores.productos',ProductosController::class);
+Route::get('/movimientos/ingresos/{id}',[MovimientosController::class,'ingresos']);
+Route::get('/movimientos/gastos/{id}',[MovimientosController::class,'gastos']);

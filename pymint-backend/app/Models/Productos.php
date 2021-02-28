@@ -69,4 +69,24 @@ class Productos extends Model
                 ->update(['estatus'=>2]);
         return $productos;
     }
+
+    public static function proveedorProducto($id_producto){
+        $proveedores = self::select('proveedores.nombre as nombre_proveedor','productos.id_proveedor as id_proveedor')
+                ->where([
+                    ['productos.id','=',$id_producto],
+                    ['productos.estatus','=',1],
+                ])
+                ->join('proveedores','productos.id_proveedor','proveedores.id')
+                ->get();
+
+        $response = [];
+        foreach ($proveedores as $item) {
+            $id = $item->id;
+            $response= [
+                'nombre_proveedor'=>$item->nombre_proveedor,
+                'id_proveedor'=>$item->id_proveedor
+            ];
+        }
+        return $response;
+    }
 }
